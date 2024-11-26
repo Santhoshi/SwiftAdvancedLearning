@@ -6,9 +6,12 @@
 //
 
 import XCTest
+@testable import SwiftAdvancedLearning
+import Combine
 
 final class MockTestDataService_Tests: XCTestCase {
 
+    var cancellables = Set<AnyCancellable>()
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -19,23 +22,95 @@ final class MockTestDataService_Tests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        cancellables.removeAll()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_MockTestDataService_init_doesSetValuesCorrectly(){
+        //Given
+        let itemsNil: [String]? = nil
+        let itemsEmpty: [String]? = []
+        let itemsWithData: [String]? = [UUID().uuidString, UUID().uuidString]
+        //When
+        let dataServiceNil = MockTestDataService(items: itemsNil)
+        let dataServiceEmpty = MockTestDataService(items: itemsEmpty)
+        let dataServiceWithData = MockTestDataService(items: itemsWithData)
+        //Then
+        XCTAssertFalse(dataServiceNil.items.isEmpty)
+        XCTAssertTrue(dataServiceEmpty.items.isEmpty)
+        XCTAssertEqual(dataServiceWithData.items.count, itemsWithData?.count)
+        
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
+    func test_MockTestDataService_downloadItemsWithEscaping_doesReturnValues(){
+        //Given
+        let dataService = MockTestDataService(items: nil)
+        //When
+        var items: [String] = []
+        let expection = XCTestExpectation()
+        dataService.downloadItemsWithEscaping { returnedItems in
+            expection.fulfill()
+            items = returnedItems
         }
+        
+        //Then
+        wait(for: [expection], timeout: 5)
+        XCTAssertEqual(items.count, dataService.items.count)
     }
+    
+    func test_MockTestDataService_downloadItemsWithCombine_doesReturnValues(){
+        //Given
+        let dataService = MockTestDataService(items: nil)
+        //When
+        var items: [String] = []
+        let expection = XCTestExpectation()
+        dataService.downloadItemsWithCombine()
+            .sink { completion in
+                switch completion{
+                case .finished:
+                    expection.fulfill()
+                case .failure:
+                    XCTFail()
+                }
+            } receiveValue: { returnedItems in
+                items = returnedItems
+                
+            }.store(in: &cancellables)
+
+        
+        //Then
+        wait(for: [expection], timeout: 5)
+        XCTAssertEqual(items.count, dataService.items.count)
+        
+    }
+    func test_MockTestDataService_downloadItemsWithCombine_doesFail(){
+        //Given
+        let dataService = MockTestDataService(items: [])
+        //When
+        var items: [String] = []
+        let expectionError = XCTestExpectation(description: "Does throw an error")
+        let expectationServerResponse = XCTestExpectation(description: "Does throw URLError.badServerResponse")
+        dataService.downloadItemsWithCombine()
+            .sink { completion in
+                switch completion{
+                case .finished:
+                    XCTFail()
+                case .failure(let error):
+                    expectionError.fulfill()
+                    
+                    if error as? URLError == URLError(.badServerResponse){
+                        expectationServerResponse.fulfill()
+                    }
+                }
+            } receiveValue: { returnedItems in
+                items = returnedItems
+                
+            }.store(in: &cancellables)
+
+        
+        //Then
+        wait(for: [expectionError,expectationServerResponse], timeout: 5)
+        XCTAssertEqual(items.count, dataService.items.count)
+        
+    }
+    
 }

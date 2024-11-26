@@ -6,13 +6,26 @@
 //
 
 import SwiftUI
+/*
+ 1. Unit Tests
+ - test the business logic in your app
+ 
+ 2. UI Tests
+ - tests the UI of your app
+ */
+
 
 struct UnitTestingBootcampView: View {
+    @StateObject private var vm : UnitTestingBootcampViewModel
+    
+    init(isPremium: Bool) {
+        _vm = StateObject(wrappedValue: UnitTestingBootcampViewModel(isPremium: isPremium))
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(vm.isPremium.description)
     }
 }
 
 #Preview {
-    UnitTestingBootcampView()
+    UnitTestingBootcampView(isPremium: true)
 }
