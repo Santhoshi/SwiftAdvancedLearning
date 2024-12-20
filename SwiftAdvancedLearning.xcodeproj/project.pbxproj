@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00271D332D1550C300A397FA /* FuturesBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00271D322D1550C300A397FA /* FuturesBootcamp.swift */; };
+		00271D372D15D62100A397FA /* PublisherBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00271D362D15D62100A397FA /* PublisherBootcamp.swift */; };
+		00271D392D15D9A900A397FA /* TryMapBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00271D382D15D9A900A397FA /* TryMapBootcamp.swift */; };
+		00271D3D2D15DAD400A397FA /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00271D3C2D15DAD400A397FA /* HeaderView.swift */; };
 		0091A1432CE2BEF400C5DFF8 /* SwiftAdvancedLearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091A1422CE2BEF400C5DFF8 /* SwiftAdvancedLearningApp.swift */; };
 		0091A1452CE2BEF400C5DFF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0091A1442CE2BEF400C5DFF8 /* ContentView.swift */; };
 		0091A1472CE2BEF500C5DFF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0091A1462CE2BEF500C5DFF8 /* Assets.xcassets */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00271D322D1550C300A397FA /* FuturesBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuturesBootcamp.swift; sourceTree = "<group>"; };
+		00271D362D15D62100A397FA /* PublisherBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherBootcamp.swift; sourceTree = "<group>"; };
+		00271D382D15D9A900A397FA /* TryMapBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryMapBootcamp.swift; sourceTree = "<group>"; };
+		00271D3C2D15DAD400A397FA /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0091A13F2CE2BEF400C5DFF8 /* SwiftAdvancedLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftAdvancedLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0091A1422CE2BEF400C5DFF8 /* SwiftAdvancedLearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAdvancedLearningApp.swift; sourceTree = "<group>"; };
 		0091A1442CE2BEF400C5DFF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +93,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00271D7F2D15F0E300A397FA /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				0091A16C2CE2BFCE00C5DFF8 /* ProtocolsBootcamp.swift */,
+				0091A16E2CE2C76600C5DFF8 /* DependencyInjectionBootcamp.swift */,
+				00271D322D1550C300A397FA /* FuturesBootcamp.swift */,
+				00271D362D15D62100A397FA /* PublisherBootcamp.swift */,
+				0091A1422CE2BEF400C5DFF8 /* SwiftAdvancedLearningApp.swift */,
+				0091A1442CE2BEF400C5DFF8 /* ContentView.swift */,
+				00271D382D15D9A900A397FA /* TryMapBootcamp.swift */,
+				00271D3C2D15DAD400A397FA /* HeaderView.swift */,
+			);
+			path = Concurrency;
+			sourceTree = "<group>";
+		};
 		0091A1362CE2BEF400C5DFF8 = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +131,10 @@
 		0091A1412CE2BEF400C5DFF8 /* SwiftAdvancedLearning */ = {
 			isa = PBXGroup;
 			children = (
+				00271D7F2D15F0E300A397FA /* Concurrency */,
 				0091A1702CE2E59700C5DFF8 /* UnitTestingBootcamp */,
-				0091A1422CE2BEF400C5DFF8 /* SwiftAdvancedLearningApp.swift */,
-				0091A1442CE2BEF400C5DFF8 /* ContentView.swift */,
 				0091A1462CE2BEF500C5DFF8 /* Assets.xcassets */,
 				0091A1482CE2BEF500C5DFF8 /* Preview Content */,
-				0091A16C2CE2BFCE00C5DFF8 /* ProtocolsBootcamp.swift */,
-				0091A16E2CE2C76600C5DFF8 /* DependencyInjectionBootcamp.swift */,
 			);
 			path = SwiftAdvancedLearning;
 			sourceTree = "<group>";
@@ -289,10 +309,14 @@
 				0091A1742CE2E71700C5DFF8 /* UnitTestingBootcampViewModel.swift in Sources */,
 				0091A16D2CE2BFCE00C5DFF8 /* ProtocolsBootcamp.swift in Sources */,
 				0091A16F2CE2C76600C5DFF8 /* DependencyInjectionBootcamp.swift in Sources */,
+				00271D332D1550C300A397FA /* FuturesBootcamp.swift in Sources */,
 				0091A1452CE2BEF400C5DFF8 /* ContentView.swift in Sources */,
 				0091A1722CE2E5BE00C5DFF8 /* UnitTestingBootcampView.swift in Sources */,
+				00271D372D15D62100A397FA /* PublisherBootcamp.swift in Sources */,
+				00271D3D2D15DAD400A397FA /* HeaderView.swift in Sources */,
 				00BDA95C2CE4451D00A0CEE5 /* MockTestDataService.swift in Sources */,
 				0091A1432CE2BEF400C5DFF8 /* SwiftAdvancedLearningApp.swift in Sources */,
+				00271D392D15D9A900A397FA /* TryMapBootcamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
